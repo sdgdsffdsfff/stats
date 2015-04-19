@@ -1,0 +1,2 @@
+ select a.event,b.ip,count(b.ip) as iptimes from event_times a left join event_log_info b on a.event=b.event where b.time between DAeen DATE_SUB(a.time,INTERVAL 1 HOUR) and a.time group by a.event,b.ip;
+create or replace view tt as select a.event,b.ip,count(b.ip) as iptimes from event_times a left join event_log_info b on a.event=b.event where b.time between DATE_SUB(a.time,INTERVAL 1 HOUR) and a.time group by a.event,b.ip order by a.event,iptimes desc;
